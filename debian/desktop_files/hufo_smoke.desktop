@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Hufo's Smoke
+Comment=From Jeremie Allard (http://hufo.planet-d.net/codefr_us.php): "This little smoke effect is coded with a little particle system done for 'The OpenGL Challenge'."
+TryExec=hufo_smoke
+Exec=hufo_smoke -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

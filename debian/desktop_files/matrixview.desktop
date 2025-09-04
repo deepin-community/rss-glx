@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=MatrixView
+Comment=Assimilation of Matrix GL by Alex Zolotov <nightradio@knoppix.ru> (http://knoppix.ru/matrixgl.shtml)
+TryExec=matrixview
+Exec=matrixview -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

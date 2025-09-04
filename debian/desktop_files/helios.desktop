@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Helios
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh
+TryExec=helios
+Exec=helios -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

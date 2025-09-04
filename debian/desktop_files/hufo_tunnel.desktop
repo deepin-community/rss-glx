@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Hufo's Tunnel
+Comment=
+TryExec=hufo_tunnel
+Exec=hufo_tunnel -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

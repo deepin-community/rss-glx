@@ -1,0 +1,14 @@
+Index: rss-glx-0.9.1/README.xscreensaver
+===================================================================
+--- rss-glx-0.9.1.orig/README.xscreensaver
++++ rss-glx-0.9.1/README.xscreensaver
+@@ -1,8 +1,7 @@
+ EITHER ------------------------------------------------------------------------
+-    Run ${INSTALL_PREFIX}/rss-glx_install.pl, which will look at your existing
++    Run /usr/bin/rss-glx_install, which will look at your existing
+ ~/.xscreensaver and add any missing entries. You probably want to back that
+ file up as the script is only lightly tested :)
+-    ${INSTALL_PREFIX} is usually /usr/local/bin or /usr/lib/xscreensaver.
+ 
+ OR ----------------------------------------------------------------------------
+ 

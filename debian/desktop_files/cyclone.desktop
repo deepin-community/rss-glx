@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Cyclone
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh
+TryExec=cyclone
+Exec=cyclone -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

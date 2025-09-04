@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Hyperspace
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh
+TryExec=hyperspace
+Exec=hyperspace -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

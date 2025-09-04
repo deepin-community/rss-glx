@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Sundancer2
+Comment=Rotating stack of quads.
+TryExec=sundancer2
+Exec=sundancer2 -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

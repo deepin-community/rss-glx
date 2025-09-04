@@ -1,0 +1,12 @@
+Index: rss-glx-0.9.1/src/driver.c
+===================================================================
+--- rss-glx-0.9.1.orig/src/driver.c
++++ rss-glx-0.9.1/src/driver.c
+@@ -238,6 +238,7 @@
+ 
+ 		if (drawEnabled) {
+ 			hack_draw (XStuff, (double)now.tv_sec + now.tv_usec / 1000000.0f, frameTimeSoFar / 1000000.0f);
++			glFinish();
+ 
+ 			glXSwapBuffers (XStuff->display, XStuff->window);
+ 		}

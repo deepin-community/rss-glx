@@ -1,0 +1,58 @@
+From: Ari Pollak <ari@debian.org>
+Subject: configure fixes
+ Removes some overzealous compilation flags being set inside configure by
+ upstream. We want CFLAGS set by us, not overridden by configure.
+ Also, don't use $X_PRE_LIBS since we don't need -lSM and -lICE.
+Forwarded: no
+Last-Update: 2011-04-18
+Index: rss-glx-0.9.1/configure.in
+===================================================================
+--- rss-glx-0.9.1.orig/configure.in
++++ rss-glx-0.9.1/configure.in
+@@ -11,28 +11,8 @@ AM_PROG_CC_C_O
+ AC_PROG_CC_C99
+ AC_C_BIGENDIAN
+ 
+-if test "x$GCC" = xyes; then
+-	CFLAGS="-O2"
+-fi
+-AC_ARG_ENABLE([debug], [AC_HELP_STRING([--enable-debug],
+-    [build with debugging information default=no])],
+-    [test "$enableval" = "yes" && CFLAGS="-g"])
+-if test "x$GCC" = xyes; then
+-	CFLAGS="$CFLAGS -Wall"
+-fi
+-
+ AC_PROG_CXX
+ 
+-if test "x$GXX" = xyes; then
+-	CXXFLAGS="-O2"
+-fi
+-AC_ARG_ENABLE([debug], [AC_HELP_STRING([--enable-debug],
+-    [build with debugging information default=no])],
+-    [test "$enableval" = "yes" && CXXFLAGS="-g"])
+-if test "x$GXX" = xyes; then
+-	CXXFLAGS="$CXXFLAGS -Wall"
+-fi
+-
+ AC_PROG_INSTALL
+ AM_DISABLE_SHARED
+ AC_PROG_LIBTOOL
+@@ -48,15 +28,12 @@ fi
+ 
+ # Checks for header files.
+ AC_HEADER_STDC
+-AC_PATH_XTRA 
+ 
+-if test "x${ac_cv_have_x:0:10}" != "xhave_x=yes"; then
+-	AC_MSG_ERROR([X11 is missing but required.])
+-fi
++PKG_CHECK_MODULES(X, x11)
+ 
+ CFLAGS="$CFLAGS $X_CFLAGS"
+ CPPFLAGS="$CPPFLAGS $X_CFLAGS"
+-LIBS="$X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS $LIBS"
++LIBS="$LIBS $X_LIBS"
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST

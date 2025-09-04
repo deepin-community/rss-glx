@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Colorfire
+Comment=From Andreas Gustafsson (http://www.lysator.liu.se/~sdw/opengl2000.html): "This didn't take me long to do, and I didn't write more than approximately 100 lines of code, but the result is still not that bad!"
+TryExec=colorfire
+Exec=colorfire -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

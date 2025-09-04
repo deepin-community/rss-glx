@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Feedback
+Comment=Stirring colors with a jiggling warp
+TryExec=feedback
+Exec=feedback -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver
