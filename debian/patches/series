@@ -3,3 +3,6 @@ pixelcity-cpp.patch
 readme.patch
 include-cstddef.patch
 glfinish.patch
+imagemagick.patch
+0007-matrixview.c-.cpp-for-new-imagemagick.patch
+0008-wrong-name-in-pixelcity-1-manpage.patch

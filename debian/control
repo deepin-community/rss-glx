@@ -1,13 +1,17 @@
 Source: rss-glx
 Section: x11
 Priority: optional
-Maintainer: Ari Pollak <ari@debian.org>
+Maintainer:  Package Salvaging Team <team+salvage@tracker.debian.org>
+Uploaders: Ari Pollak <ari@debian.org>
 Build-Depends: debhelper-compat (= 13), libx11-dev, libxt-dev,
  libgl-dev, libglu1-mesa-dev,
  libglew-dev, libopenal-dev, libalut-dev,
  libmagickwand-dev, pkgconf,
- libglc-dev
+ libglc-dev,
+ libmagick++-7-headers
 Standards-Version: 3.9.1
+Vcs-Browser: https://salsa.debian.org/salvage-team/rss-glx
+Vcs-Git: https://salsa.debian.org/salvage-team/rss-glx.git
 Homepage: http://rss-glx.sourceforge.net
 
 Package: rss-glx

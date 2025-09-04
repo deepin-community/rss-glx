@@ -1,0 +1,21 @@
+From: Tanguy Ortolo <tanguy+debian@ortolo.eu>
+Date: Mon, 8 Nov 2010 16:26:54 +0100
+Subject: wrong name in pixelcity(1) manpage (Closes: #602826)
+
+---
+ src/pixelcity.1 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pixelcity.1 b/src/pixelcity.1
+index cbc4eed..29e5be4 100644
+--- a/src/pixelcity.1
++++ b/src/pixelcity.1
+@@ -9,7 +9,7 @@
+ .SH NAME
+ pixelcity - Procedural city fly through.
+ .SH SYNOPSIS
+-.B plasma
++.B pixelcity
+ [\--root/-r]
+ [\--maxfps/-x \fInumber\fP]
+ [\--vsync/-y \fInumber\fP]

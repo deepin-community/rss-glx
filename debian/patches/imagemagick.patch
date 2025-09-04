@@ -1,0 +1,193 @@
+From: Andreas Tille <tille@debian.org>
+Date: Wed, 5 Feb 2025 16:18:39 +0100
+Subject: Try to build with latest ImageMagick
+
+Last-Update: 2025-02-05
+Bug-Debian: https://bugs.debian.org/1079338
+---
+ src/TexMgr.cpp   | 19 +++++++++----------
+ src/matrixview.c | 51 +++++++++++++++++++++++++--------------------------
+ 2 files changed, 34 insertions(+), 36 deletions(-)
+
+diff --git a/src/TexMgr.cpp b/src/TexMgr.cpp
+index 435fd47..057cfed 100644
+--- a/src/TexMgr.cpp
++++ b/src/TexMgr.cpp
+@@ -25,8 +25,8 @@
+ #endif
+ #include <cstdlib>
+ 
+-#include <magick/api.h>
+-#include <wand/magick-wand.h>
++#include <Magick++.h>
++#include <MagickWand/MagickWand.h>
+ #include <dirent.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -254,12 +254,10 @@ static unsigned int computeDesiredSize(const unsigned int input, const int desir
+ 
+ // Directory scanning + image loading code in a separate function callable either from loadNextImage or another thread if pthreads is available.
+ void TexMgr::loadNextImageFromDisk() {
+-	MagickWand *magick_wand = NewMagickWand();
+-	ExceptionInfo exception;
++	MagickCore::MagickWand *magick_wand = MagickCore::NewMagickWand();
++	MagickCore::ExceptionInfo *exception = MagickCore::AcquireExceptionInfo();
+ 	int dirLoop = 0;
+ 
+-	GetExceptionInfo (&exception);
+-
+ 	int imageLoaded = 0;
+ 	do {
+ 		struct dirent *file;
+@@ -281,13 +279,13 @@ void TexMgr::loadNextImageFromDisk() {
+ 
+ 			if (!stat(full_path_and_name.c_str(), (struct stat *)&fileStat)) {
+ 				if (S_ISREG(fileStat.st_mode)) {
+-					if (MagickReadImage (magick_wand, full_path_and_name.c_str ()) == MagickFalse) {
++					if (MagickReadImage (magick_wand, full_path_and_name.c_str ()) == MagickCore::MagickFalse) {
+ 						char *description;
+-						ExceptionType severity;
++						MagickCore::ExceptionType severity;
+ 
+ 						description = MagickGetException (magick_wand, &severity);
+ 						fprintf (stderr, "Error loading %s: %s\n", full_path_and_name.c_str(), description);
+-						description = (char *)MagickRelinquishMemory (description);
++						description = (char *)MagickCore::MagickRelinquishMemory (description);
+ 					} else {
+ 						imageLoaded = 1;
+ 					}
+@@ -317,7 +315,8 @@ void TexMgr::loadNextImageFromDisk() {
+ 		nextH = ohh;
+ 	}
+ 
+-	ExportImagePixels (GetImageFromMagickWand(magick_wand), 0, 0, oww, ohh, "RGBA", CharPixel, nextTex, &exception);
++	ExportImagePixels (GetImageFromMagickWand(magick_wand), 0, 0, oww, ohh, "RGBA", MagickCore::CharPixel, nextTex, exception);
++        MagickCore::DestroyExceptionInfo(exception);
+ 
+ 	magick_wand = DestroyMagickWand (magick_wand);
+ 
+diff --git a/src/matrixview.c b/src/matrixview.c
+index 4c23682..d76930c 100644
+--- a/src/matrixview.c
++++ b/src/matrixview.c
+@@ -84,8 +84,8 @@ float *pts;
+ float *texcoords;
+ unsigned char *colors;
+ 
+-#include <magick/api.h>
+-#include <wand/magick-wand.h>
++#include <Magick++.h>
++#include <MagickWand/MagickWand.h>
+ #include <dirent.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -98,12 +98,10 @@ unsigned char *next_pic = NULL;
+ 
+ // Directory scanning + image loading code in a separate function callable either from loadNextImage or another thread if pthreads is available.
+ void loadNextImageFromDisk() {
+-	MagickWand *magick_wand = NewMagickWand();
+-	ExceptionInfo exception;
++	auto magick_wand = MagickCore::NewMagickWand();
++	auto exception = MagickCore::AcquireExceptionInfo();
+ 	int dirLoop = 0;
+ 
+-	GetExceptionInfo (&exception);
+-
+ 	int imageLoaded = 0;
+ 	do {
+ 		struct dirent *file;
+@@ -128,13 +126,13 @@ void loadNextImageFromDisk() {
+ 
+ 				if (!stat(full_path_and_name, (struct stat *)&fileStat)) {
+ 					if (S_ISREG(fileStat.st_mode)) {
+-						if (MagickReadImage(magick_wand, full_path_and_name) == MagickFalse) {
++						if (MagickReadImage(magick_wand, full_path_and_name) == MagickCore::MagickFalse) {
+ 							char *description;
+-							ExceptionType severity;
++							MagickCore::ExceptionType severity;
+ 
+ 							description = MagickGetException (magick_wand, &severity);
+ 							fprintf (stderr, "Error loading %s: %s\n", full_path_and_name, description);
+-							description = (char *)MagickRelinquishMemory (description);
++							description = (char *)MagickCore::MagickRelinquishMemory (description);
+ 						} else {
+ 							imageLoaded = 1;
+ 						}
+@@ -153,13 +151,14 @@ void loadNextImageFromDisk() {
+ 
+ 	MagickScaleImage (magick_wand, text_x, text_y);
+ 	MagickNormalizeImage (magick_wand);
+-	MagickContrastImage (magick_wand, MagickTrue);
+-	MagickNegateImage (magick_wand, MagickFalse);
++	MagickContrastImage (magick_wand, MagickCore::MagickTrue);
++	MagickNegateImage (magick_wand, MagickCore::MagickFalse);
+ 
+ 	if (!next_pic)
+ 		next_pic = (unsigned char *)malloc (text_x * text_y);
+ 
+-	ExportImagePixels (GetImageFromMagickWand(magick_wand), 0, 0, text_x, text_y, "I", CharPixel, next_pic, &exception);
++	ExportImagePixels (GetImageFromMagickWand(magick_wand), 0, 0, text_x, text_y, "I", MagickCore::CharPixel, next_pic, exception);
++	MagickCore::DestroyExceptionInfo(exception);
+ 
+ 	magick_wand = DestroyMagickWand (magick_wand);
+ }
+@@ -211,11 +210,9 @@ void loadNextImage ()
+ 			pthread_cond_signal(next_pic_cond);
+ 		}
+ 	} else {
+-		ExceptionInfo exception;
+-		Image *image = NULL, *scaled_image;
+-		ImageInfo *image_info;
+-
+-		GetExceptionInfo (&exception);
++		auto exception = MagickCore::AcquireExceptionInfo();
++		MagickCore::Image *image = NULL, *scaled_image;
++		MagickCore::ImageInfo *image_info;
+ 
+ 		if (!pics)
+ 			LOAD_TEXTURE (pics, cpics, cpics_compressedsize, cpics_size)
+@@ -224,25 +221,27 @@ void loadNextImage ()
+ 			if (!pic)
+ 				pic = (unsigned char *)malloc (text_x * text_y);
+ 
+-			image_info = CloneImageInfo ((ImageInfo *) NULL);
+-			image_info->size = AcquireMagickMemory(sizeof("90x70"));
++			image_info = MagickCore::CloneImageInfo ((MagickCore::ImageInfo *) NULL);
++			image_info->size = (char *)MagickCore::AcquireMagickMemory(sizeof("90x70"));
+ 			strcpy(image_info->size, "90x70");
+-			image = AcquireImage(image_info);
++			image = AcquireImage(image_info, exception);
+ 
+-			ImportImagePixels(image, 0, 0, 90, 70, "I", CharPixel, (unsigned char *)(pics + ((random () & 15) * (90 * 70))));
++			ImportImagePixels(image, 0, 0, 90, 70, "I", MagickCore::CharPixel, (unsigned char *)(pics + ((random () & 15) * (90 * 70))), exception);
+ 
+-			scaled_image = ScaleImage (image, text_x, text_y, &exception);
++			scaled_image = ScaleImage (image, text_x, text_y, exception);
+ 
+-			ExportImagePixels (scaled_image, 0, 0, text_x, text_y, "I", CharPixel, pic, &exception);
++			ExportImagePixels (scaled_image, 0, 0, text_x, text_y, "I", MagickCore::CharPixel, pic, exception);
+ 
+-			DestroyImage (image);
+-			DestroyImage (scaled_image);
++			MagickCore::DestroyImage (image);
++			MagickCore::DestroyImage (scaled_image);
+ 		} else {
+ 			if (!pics)
+ 				LOAD_TEXTURE (pics, cpics, cpics_compressedsize, cpics_size)
+ 
+ 			pic = (unsigned char *)(pics + ((random () & 15) * (text_x * text_y)));
+ 		}
++
++		MagickCore::DestroyExceptionInfo(exception);
+ 	}
+ }
+ 
+@@ -560,7 +559,7 @@ void hack_init (xstuff_t * XStuff)	// Called right after the window is created,
+ 	load_texture ();
+ 	make_text ();
+ 
+-	MagickWandGenesis ();
++	MagickCore::MagickWandGenesis ();
+ 
+ 	ourBuildTextures ();
+ 
