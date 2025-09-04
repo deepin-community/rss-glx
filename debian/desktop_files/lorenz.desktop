@@ -1,0 +1,10 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Lorenz Attractor
+TryExec=lorenz
+Exec=lorenz -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

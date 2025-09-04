@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=SpirographX
+Comment=Port of SpirographX by Holmes Futrell <holmes@neatosoftware.com> (http://homepage.mac.com/solidmag/spiro/).
+TryExec=spirographx
+Exec=spirographx -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Euphoria
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh.
+TryExec=euphoria
+Exec=euphoria -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Drempels
+Comment=Hallucinatory desktop enhancer
+TryExec=drempels
+Exec=drempels -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

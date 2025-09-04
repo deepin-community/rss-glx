@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=BioF
+Comment=This is an attempt to recreate some of the work of William Latham. Take a look at the program 'organic art' at this site (http://www.artworks.co.uk). 
+TryExec=biof
+Exec=biof -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

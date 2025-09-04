@@ -1,5 +1,288 @@
-template-repository (1.0-1) unstable; urgency=medium
+rss-glx (0.9.1-6.5) unstable; urgency=medium
 
-  * Initial release
+  * Non-maintainer upload
+  * Add apport hook from Ubuntu
+  * Set debhelper compat to 13	
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Sat, 03 Feb 2024 11:54:00 -0500
+
+rss-glx (0.9.1-6.4) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * debian/patches/glfinish.patch: Call GLFinish() prior to glXSwapBuffers()
+    (Closes: #1061507)
+  * Install screensavers into /usr/libexec/xscreensaver (Closes: #979490)
+
+ -- Timothy Pearson <tpearson@raptorengineering.com>  Sat, 27 Jan 2024 08:41:00 -0600
+
+rss-glx (0.9.1-6.3) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * debian/patches/include-cstddef.patch: Include cstddef for size_t (Closes:
+    #984322)
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sat, 16 Oct 2021 15:11:19 +0200
+
+rss-glx (0.9.1-6.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Drop libglew1.5-dev from Build-Depends
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 03 Oct 2021 21:22:22 +0200
+
+rss-glx (0.9.1-6.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Remove build-dependency libglewmx1.5-dev to avoid conflicting
+    build-dependencies. (Closes: #838800)
+
+ -- Axel Beckert <abe@debian.org>  Mon, 02 Jan 2017 00:50:24 +0100
+
+rss-glx (0.9.1-6) unstable; urgency=low
+
+  * Build-depend on libgl1-mesa-dev instead of -swx11-dev (Closes: #713110)
+
+ -- Ari Pollak <ari@debian.org>  Sat, 17 Aug 2013 22:08:50 -0400
+
+rss-glx (0.9.1-5) unstable; urgency=low
+
+  * Fix non-POSIX-compliant wildcard when removing .a and .la files
+    (Closes: #628103)
+
+ -- Ari Pollak <ari@debian.org>  Fri, 27 May 2011 10:35:25 -0400
+
+rss-glx (0.9.1-4) unstable; urgency=low
+
+  * Switch to debhelper 7 short format with dh-autoreconf
+  * Don't install internal static libraries
+  * pixelcity-cpp.patch:
+    - force compiling pixelcity with g++ (Closes: #622042)
+  * configure.diff:
+    - update to apply against configure.in instead of configure
+
+ -- Ari Pollak <ari@debian.org>  Mon, 18 Apr 2011 20:53:55 -0400
+
+rss-glx (0.9.1-3) unstable; urgency=low
+
+  * Add build-dependency on libglewmx1.5-dev (Closes: #587112) 
+
+ -- Ari Pollak <ari@debian.org>  Tue, 06 Jul 2010 00:06:07 -0400
+
+rss-glx (0.9.1-2) unstable; urgency=low
+
+  * Fix pixelcity.desktop typo (Closes: #574034)
+
+ -- Ari Pollak <ari@debian.org>  Tue, 23 Mar 2010 22:30:06 -0400
+
+rss-glx (0.9.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Switch to source format 3.0 (quilt)
+  * Fix path to kde4 screensaver files (Closes: #534611)
+  * Remove -Wl,--as-needed, which doesn't appear to work properly with
+    pixelcity
+
+ -- Ari Pollak <ari@debian.org>  Wed, 03 Feb 2010 20:09:24 -0500
+
+rss-glx (0.9.0-2) unstable; urgency=low
+
+  * Remove remaining source patches for hyperspace and skyrocket; these
+    seem to be unnecessary as of 0.9.0
+
+ -- Ari Pollak <ari@debian.org>  Fri, 22 May 2009 18:30:21 -0400
+
+rss-glx (0.9.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Ari Pollak <ari@debian.org>  Fri, 22 May 2009 16:58:26 -0400
+
+rss-glx (0.8.3-1) unstable; urgency=low
+
+  * New upstream release
+    - Fixes crash due to bad range check in cyclone (Closes: #511497)
+
+ -- Ari Pollak <ari@debian.org>  Mon, 13 Apr 2009 19:40:44 -0400
+
+rss-glx (0.8.2-2) unstable; urgency=low
+
+  * Fix config.sub and config.guess symlinks; thanks to Peter Green for the
+    patch (Closes: #523597)
+  * Update copyright file
+
+ -- Ari Pollak <ari@debian.org>  Sun, 12 Apr 2009 15:48:43 -0400
+
+rss-glx (0.8.2-1) unstable; urgency=low
+
+  * New upstream release
+    - Fixes screensavers consuming 100% CPU (Closes: #445204)
+  * Add Homepage field to control file (Closes: #492338)
+
+ -- Ari Pollak <ari@debian.org>  Tue, 02 Sep 2008 23:50:13 -0400
+
+rss-glx (0.8.1-11) experimental; urgency=low
+
+  * Apply patch to build with new ImageMagick in experimental
+    (Closes: #485896)
+
+ -- Ari Pollak <ari@debian.org>  Sun, 29 Jun 2008 16:26:54 -0400
+
+rss-glx (0.8.1-10) unstable; urgency=low
+
+  * Update build dependency on libglew for unannounced transition
+  * Apply patch from rsxs to fix camera position in hyperspace
+    (Closes: #471734)
+
+ -- Ari Pollak <ari@debian.org>  Wed, 19 Mar 2008 23:19:57 -0400
+
+rss-glx (0.8.1-9) unstable; urgency=low
+
+  * Remove dependency on xscreensaver-gl now that xscreensaver
+    is fixed (Closes: #463409)
+
+ -- Ari Pollak <ari@debian.org>  Sun, 03 Feb 2008 13:54:39 -0500
+
+rss-glx (0.8.1-8) unstable; urgency=high
+
+  * Depend on xscreensaver-gl as a temporary workaround for #448157
+    (CVE-2007-5585) so that xscreensaver doesn't unlock if it can't find
+    xscreensaver-gl-helper
+
+ -- Ari Pollak <ari@debian.org>  Fri, 26 Oct 2007 12:17:10 -0400
+
+rss-glx (0.8.1-7) unstable; urgency=low
+
+  * Add proper header files to fix FTBFS on g++-4.3 (Closes: #441584)
+
+ -- Ari Pollak <ari@debian.org>  Tue, 02 Oct 2007 21:58:16 -0400
+
+rss-glx (0.8.1-6) unstable; urgency=low
+
+  * Install .desktop files to new location for gnome-screensaver 2.18
+    (Closes: #390659)
+
+ -- Ari Pollak <ari@debian.org>  Mon, 07 May 2007 17:36:16 -0400
+
+rss-glx (0.8.1-5) unstable; urgency=low
+
+  * Add proper CFLAGS and CXXFLAGS to build
+  * Build with -Wl,--as-needed (Closes: #422714)
+
+ -- Ari Pollak <ari@debian.org>  Mon, 07 May 2007 16:46:08 -0400
+
+rss-glx (0.8.1-4) unstable; urgency=low
+
+  * Apply patch to fix build under g++ 4.3 (Closes: #417521)
+
+ -- Ari Pollak <ari@debian.org>  Thu, 05 Apr 2007 22:56:49 -0400
+
+rss-glx (0.8.1-3) unstable; urgency=low
+
+  * It would really help if I actually made the change I said I would
+    do in the changelog.
+
+ -- Ari Pollak <ari@debian.org>  Sat,  8 Apr 2006 18:05:11 -0400
+
+rss-glx (0.8.1-2) unstable; urgency=low
+
+  * Build-Depend on pkg-config to fix FTBFS (Closes: #361504)
+
+ -- Ari Pollak <ari@debian.org>  Sat,  8 Apr 2006 14:44:37 -0400
+
+rss-glx (0.8.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Use gnome-screensaver .desktop files from Ubuntu, which should work now
+    (needed to pass -r to the screensavers to get them to draw on the root
+    window) (Closes: #345264)
+
+ -- Ari Pollak <ari@debian.org>  Fri,  7 Apr 2006 19:05:52 -0400
+
+rss-glx (0.8.0-7) unstable; urgency=low
+
+  * Add build-dependency on libalut-dev and patch configure to 
+    link with both libalut & libopenal, which is necessary with the new
+    version of openal.
+
+ -- Ari Pollak <ari@debian.org>  Sun, 19 Mar 2006 17:56:05 +0000
+
+rss-glx (0.8.0-6) unstable; urgency=low
+
+  * I'm still an idiot. (Closes: #356971)
+
+ -- Ari Pollak <ari@debian.org>  Sun, 19 Mar 2006 11:02:01 -0500
+
+rss-glx (0.8.0-5) unstable; urgency=low
+
+  * Apply patch from Martin Michlmayr to fix compilation on g++ 4.1
+    (Closes: #356971)
+
+ -- Ari Pollak <ari@debian.org>  Fri, 17 Mar 2006 18:17:42 +0000
+
+rss-glx (0.8.0-4) unstable; urgency=low
+
+  * I am an idiot. (Closes: #350985)
+
+ -- Ari Pollak <ari@debian.org>  Thu,  2 Feb 2006 12:13:14 -0500
+
+rss-glx (0.8.0-3) unstable; urgency=low
+
+  * Don't install gnome-screensaver support since it doesn't
+    work correctly at all (Closes: #350623)
+
+ -- Ari Pollak <ari@debian.org>  Mon, 30 Jan 2006 15:48:04 -0500
+
+rss-glx (0.8.0-2) unstable; urgency=low
+
+  * This will trigger a rebuild, so the libs will be updated (Closes: #347404)
+  * Fix configure script to not add -lSM and -lICE (Closes: #347741)
+  * Build-depends update:
+    libx11-dev, libgl-dev, libglu-dev ->
+      libx11-dev | xlibs-dev, libxt-dev | xlibs-ev, xlibmesa-gl-dev | libgl-dev,
+      libglu1-xorg-dev | libglu-dev
+  * Add .desktop files so that rss-glx works with gnome-screensaver
+    (Closes: #345264)
+  * Add Suggests: xscreensaver | gnome-screensaver
+
+ -- Ari Pollak <ari@debian.org>  Fri, 20 Jan 2006 13:56:17 -0500
+
+rss-glx (0.8.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Update build-depends for new ImageMagick (Closes: #332464)
+  * Change build-depends on xlibs-dev to libx11-dev
+  * Add build-depends on libtool becuase upstream provides
+    config.guess and config.sub as symlinks to /usr/share/libtool/*
+  * Add build-depends on libglew-dev since one of the hacks requires it
+  * Move rss-glx_install.pl to rss-glx_install, and update
+    README.xscreensaver with new filename. (Closes: #320337)
+  * We should now be building with ImageMagick again, so matrixview -i
+    should work. (Closes: #259454)
+
+ -- Ari Pollak <ari@debian.org>  Thu,  6 Oct 2005 13:38:12 -0400
+
+rss-glx (0.7.5-4) unstable; urgency=low
+
+  * Rebuild against imagemagick 6, update build-depends (Closes: #247349)
+
+ -- Ari Pollak <ari@debian.org>  Tue,  4 May 2004 12:54:25 -0400
+
+rss-glx (0.7.5-3) unstable; urgency=low
+
+  * Use new vroot.h from xscreensaver 4.14 (Closes: #217703)
+
+ -- Ari Pollak <ari@debian.org>  Mon, 27 Oct 2003 11:53:36 -0500
+
+rss-glx (0.7.5-2) unstable; urgency=low
+
+  * Eek, the binaries should have been in /usr/lib/xscreensaver in the 
+    first place. Move them now. (Closes: #212934)
+
+ -- Ari Pollak <ari@debian.org>  Fri, 26 Sep 2003 20:38:52 -0400
+
+rss-glx (0.7.5-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Ari Pollak <ari@debian.org>  Sat, 16 Aug 2003 12:38:37 -0400
+

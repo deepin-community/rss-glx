@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Pixel City
+Comment=A screensaver for which generates and performs a fly-through of a nighttime cityscape
+TryExec=pixelcity
+Exec=pixelcity -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Busy Spheres
+Comment=Spheres made of dancing particles.
+TryExec=busyspheres
+Exec=busyspheres -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

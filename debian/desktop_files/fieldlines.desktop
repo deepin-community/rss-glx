@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Fieldlines
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh
+TryExec=fieldlines
+Exec=fieldlines -r
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver

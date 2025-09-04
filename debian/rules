@@ -2,3 +2,18 @@
 
 %:
 	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure -- --with-configdir=/usr/share/xscreensaver/config \
+		--with-kdessconfigdir=/usr/share/kde4/services/ScreenSavers \
+		--bindir=/usr/libexec/xscreensaver --enable-static=no
+
+execute_after_dh_auto_install:
+	mv $(CURDIR)/debian/rss-glx/usr/libexec/xscreensaver/rss-glx_install.pl \
+		$(CURDIR)/debian/rss-glx/usr/bin/rss-glx_install
+	cp $(CURDIR)/debian/desktop_files/*.desktop \
+		$(CURDIR)/debian/rss-glx/usr/share/applications/screensavers
+	install -D $(CURDIR)/debian/apport_hook.py \
+		$(CURDIR)/debian/rss-glx/usr/share/apport/package-hooks/source_rss-glx.py
+	# remove static libraries:
+		rm $(CURDIR)/debian/rss-glx/usr/lib/*/lib*.*a
